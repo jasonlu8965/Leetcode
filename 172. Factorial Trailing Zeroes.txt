@@ -1,0 +1,25 @@
+/*
+题目
+Given an integer n, return the number of trailing zeroes in n!.
+Note: Your solution should be in logarithmic time complexity.
+*/
+/*思路
+1）0的个数应该为阶乘所包含的所有10的倍数，不完整
+2）0的个数还应该包含个位为5的数，个位为5的数在乘法中会变成10的倍数
+3）5的幂在阶乘中会产生乘方次0
+4）综合上面几个点，得出5的幂会产生0，几次幂，产生几个零。
+*/
+
+
+class Solution {
+public:
+    int trailingZeroes(int n) {
+        int numZeros=0;
+        while(n>=5)
+        {
+            numZeros += n/5;
+            n=n/5;
+        }
+        return numZeros;
+    }
+};
